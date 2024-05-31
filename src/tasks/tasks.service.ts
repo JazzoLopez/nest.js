@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Task, TaskStatus } from './task.entity';
+import { v4 } from 'uuid';
 
 
 @Injectable() /*    INJECTAR EN OTRAS CLASES */
@@ -18,7 +19,7 @@ export class TasksService {
 
     createTask(title: string, description: string) {
         const newTask = {
-            id: new Date().toISOString(),
+            id: v4(),
             title,
             description,
             status: TaskStatus.PENDING
